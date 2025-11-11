@@ -7,12 +7,18 @@ use Illuminate\Http\Request;
 
 class TarefaController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+        // Só irá conseguir logar caso passe pela rota de autenticação
+        // Podemos implementar nas rotas
+   }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return 'Chegamos até aqui';
     }
 
     /**
