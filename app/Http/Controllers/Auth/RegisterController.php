@@ -21,7 +21,7 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
+    use RegistersUsers; // trait(required)
 
     /**
      * Where to redirect users after registration.
@@ -51,7 +51,11 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:4', 'confirmed'],
+
+            // name = password
+            // name = password_confirmation
+            // os dois valores(parâmetros) tem que ser iguais
         ]);
     }
 
