@@ -20,12 +20,15 @@ class TarefaController extends Controller
      */
     public function index()
     {
-        $id = auth()->user()->id;
-        $name = auth()->user()->name;
-        $email = auth()->user()->email;
+        $user_id = auth()->user()->id;
+        $tarefas = Tarefa::where('user_id', $user_id)->get();
+        return view('tarefa.index', ['tarefas' => $tarefas]);
+        // $id = auth()->user()->id;
+        // $name = auth()->user()->name;
+        // $email = auth()->user()->email;
 
 
-        return "ID $id | Nome: $name | Email: $email";
+        // return "ID $id | Nome: $name | Email: $email";
         /*
         if(auth()->check()) {
             $id = auth()->user()->id;
@@ -63,7 +66,9 @@ class TarefaController extends Controller
      */
     public function store(Request $request)
     {
-        $tarefa = Tarefa::create($request->all());
+        $dados = $request->all('tarefa', 'data_limite_conclusao');
+        $dados['user_id'] = auth()->user()->id;
+        $tarefa = Tarefa::create($dados);
         $destinatario = auth()->user()->email;
         Mail::to($destinatario)->send(new NovaTarefaMail($tarefa));
         return redirect()->route('tarefa.show', ['tarefa' => $tarefa->id]);
