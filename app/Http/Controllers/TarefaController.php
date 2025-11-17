@@ -20,12 +20,15 @@ class TarefaController extends Controller
      */
     public function index()
     {
-        $id = auth()->user()->id;
-        $name = auth()->user()->name;
-        $email = auth()->user()->email;
+        $user_id = auth()->user()->id;
+        $tarefas = Tarefa::where('user_id', $user_id)->get();
+        return view('tarefa.index', ['tarefas' => $tarefas]);
+        // $id = auth()->user()->id;
+        // $name = auth()->user()->name;
+        // $email = auth()->user()->email;
 
 
-        return "ID $id | Nome: $name | Email: $email";
+        // return "ID $id | Nome: $name | Email: $email";
         /*
         if(auth()->check()) {
             $id = auth()->user()->id;
