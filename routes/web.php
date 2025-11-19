@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TarefaController;
 use App\Mail\MensagemTesteMail;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
     ->name('home')
     ->middleware('verified');
     */
+Route::get('tarefa/exportacao', [TarefaController::class , 'exportacao'])->name('tarefa.exportacao');
+    
 Route::resource('tarefa', 'App\Http\Controllers\TarefaController')
     ->middleware('verified');
 
