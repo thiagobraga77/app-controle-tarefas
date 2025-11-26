@@ -16,6 +16,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
     ->middleware('verified');
     */
 Route::get('tarefa/exportacao/{extensao}', [TarefaController::class , 'exportacao'])->name('tarefa.exportacao');
+
+Route::get('tarefa/exportar', [TarefaController::class , 'exportar'])->name('tarefa.exportar');
+
     
 Route::resource('tarefa', 'App\Http\Controllers\TarefaController')
     ->middleware('verified');

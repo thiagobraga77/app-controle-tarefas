@@ -11,10 +11,14 @@
                                 Tarefas
                             </div>
                             <div class="col-6 text-right">
-                                <a href="{{ route('tarefa.create') }}" class="mr-3">Novo</a>
-                                <a href="{{ route('tarefa.exportacao', ['extensao' => 'xlsx'])}}" class="mr-3">XLSX</a>
-                                <a href="{{ route('tarefa.exportacao', ['extensao' => 'csv']) }}"  class="mr-3">CSV</a>
-                                <a href="{{ route('tarefa.exportacao', ['extensao' => 'pdf']) }}"  class="mr-3">PDF</a>
+                                <a href="{{ route('tarefa.create') }}" style="margin-right: 25px;">Novo</a>
+                                <a href="{{ route('tarefa.exportacao', ['extensao' => 'xlsx']) }}"
+                                    style="margin-right: 25px;">XLSX</a>
+                                <a href="{{ route('tarefa.exportacao', ['extensao' => 'csv']) }}"
+                                    style="margin-right: 25px;">CSV</a>
+                                <a href="{{ route('tarefa.exportacao', ['extensao' => 'pdf']) }}"
+                                    style="margin-right: 25px;">PDF</a>
+                                <a href="{{ route(name: 'tarefa.exportar') }}">PDF V2</a>
                             </div>
                         </div>
                     </div>
